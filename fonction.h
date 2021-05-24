@@ -24,7 +24,7 @@ Face* create_rubiks(Face* cube);
 void display_letter(T_COLOR color);
 void display_rubriks (Face* cube);
 Face* fill_rubiks(Face* cube);
-Face* free_rubiks(Face* cube);
+void free_rubiks(Face* cube);
 
 //-----------------------
 

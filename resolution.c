@@ -44,87 +44,153 @@ Face* croix(Face* cube){
                 bool = 1;
             }
         }while (bool == 0);*/
+    int cpt_up1 = 0, cpt_up2 = 0 ,cpt_up3 =0,cpt_up4=0, cpt, cpt_down1=0, cpt_down2=0, cpt_down3=0,cpt_down4=0, cpt_up= 4 , cpt_down =0;
+    cpt = cpt_up1 + cpt_up2 + cpt_up3 + cpt_up4 + cpt_down1 + cpt_down2 + cpt_down3 + cpt_down4;
 
-    if (cube[LEFT].Tab_carre[1][0] == c_up){
-        cube = clockwise(cube, 1, LEFT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, FRONT);
-        cube = clockwise(cube, 1, UP);
-    }
+    while (cpt_up !=0) {
 
-    if (cube[FRONT].Tab_carre[1][0] == c_up){
-        cube = clockwise(cube, 1, FRONT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, RIGHT);
-        cube = clockwise(cube, 1, UP);
-    }
-
-    if (cube[RIGHT].Tab_carre[1][0] == c_up) {
-        cube = clockwise(cube, 1, RIGHT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, BACK);
-        cube = clockwise(cube, 1, UP);
-    }
-
-    if (cube[BACK].Tab_carre[1][0] == c_up) {
-        cube = clockwise(cube, 1, BACK);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, LEFT);
-        cube = clockwise(cube, 1, UP);
-    }
-
-
-    while (cube[LEFT].Tab_carre[0][1] == c_up || cube[LEFT].Tab_carre[2][1] == c_up ||cube[LEFT].Tab_carre[1][2] == c_up){
-        while (cube[UP].Tab_carre[0][1] == c_up){
-            cube = clockwise(cube, 1, UP);
+        if (cube[UP].Tab_carre[1][0] == c_up) {
+            cpt_up1 ++;
+            clockwise(cube, 1, BACK);
         }
-        while (cube[LEFT].Tab_carre[1][0] != c_up){
+        if (cpt_up1 > 4) {
+            int x = 1 + rand() % 4;
+            clockwise(cube, 1, x);
+        }
+        if (cube[UP].Tab_carre[1][0] != c_up) {
+            cpt_up1 = 0;
+        }
+
+
+
+        if (cube[UP].Tab_carre[1][2] == c_up) {
+            cpt_up2++;
+            clockwise(cube, 1, FRONT);
+        }
+        if (cpt_up2 > 4) {
+            int x = 1 + rand() % 4;
+            clockwise(cube, 1, x);
+        }
+        if (cube[UP].Tab_carre[1][2] != c_up) {
+            cpt_up2 = 0;
+        }
+
+
+        if (cube[UP].Tab_carre[0][1] == c_up) {
+            cpt_up3 ++;
+            clockwise(cube, 1, LEFT);
+        }
+
+        if (cpt_up3 >4) {
+            int x = 1 + rand() % 4;
+            clockwise(cube, 1, x);
+        }
+        if (cube[UP].Tab_carre[0][1] != c_up) {
+            cpt_up3 = 0;
+        }
+
+
+        if (cube[UP].Tab_carre[2][1] == c_up) {
+            cpt_up4 ++;
+            clockwise(cube, 1, RIGHT);
+        }
+        if (cpt_up4 >4) {
+            int x = 1 + rand() % 4;
+            clockwise(cube, 1, x);
+        }
+        if (cube[UP].Tab_carre[2][1] != c_up) {
+            cpt_up4 = 0;
+        }
+
+        cpt_up = cpt_up1 + cpt_up2 + cpt_up3 + cpt_up4;
+    }
+
+
+
+
+
+    if (cube[LEFT].Tab_carre[1][2] == c_up){
+            cube = clockwise(cube, 1, LEFT);
+            cube = clockwise(cube, 3, DOWN);
+            cube = clockwise(cube, 1, BACK);
+            cube = clockwise(cube, 1, DOWN);
+        }
+
+    if (cube[FRONT].Tab_carre[1][2] == c_up){
+        cube = clockwise(cube, 1, FRONT);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, LEFT);
+        cube = clockwise(cube, 1, DOWN);
+
+    }
+
+    if (cube[RIGHT].Tab_carre[1][2] == c_up) {
+        cube = clockwise(cube, 1, RIGHT);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, FRONT);
+        cube = clockwise(cube, 1, DOWN);
+    }
+
+    if (cube[BACK].Tab_carre[1][2] == c_up) {
+        cube = clockwise(cube, 1, BACK);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, RIGHT);
+        cube = clockwise(cube, 1, DOWN);
+    }
+
+    while (cube[LEFT].Tab_carre[0][1] == c_up || cube[LEFT].Tab_carre[2][1] == c_up ||cube[LEFT].Tab_carre[1][0] == c_up){
+        while (cube[DOWN].Tab_carre[0][1] == c_up){
+            cube = clockwise(cube, 1, DOWN);
+        }
+        while (cube[LEFT].Tab_carre[1][2] != c_up){
             cube = clockwise(cube, 1, LEFT);
         }
+
         cube = clockwise(cube, 1, LEFT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, FRONT);
-        cube = clockwise(cube, 1, UP);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, BACK);
+        cube = clockwise(cube, 1, DOWN);
     }
 
-    while (cube[FRONT].Tab_carre[0][1] == c_up || cube[FRONT].Tab_carre[2][1] == c_up || cube[FRONT].Tab_carre[1][2] == c_up){
-        while (cube[UP].Tab_carre[1][2] == c_up){
-            cube = clockwise(cube, 1, UP);
+    while (cube[FRONT].Tab_carre[0][1] == c_up || cube[FRONT].Tab_carre[2][1] == c_up || cube[FRONT].Tab_carre[1][0] == c_up){
+        while (cube[DOWN].Tab_carre[1][0] == c_up){
+            cube = clockwise(cube, 1, DOWN);
         }
-        while (cube[FRONT].Tab_carre[1][0] != c_up){
+        while (cube[FRONT].Tab_carre[1][2] != c_up){
             cube = clockwise(cube, 1, FRONT);
         }
         cube = clockwise(cube, 1, FRONT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, RIGHT);
-        cube = clockwise(cube, 1, UP);
-    }
-
-    while (cube[RIGHT].Tab_carre[0][1] == c_up || cube[RIGHT].Tab_carre[2][1] == c_up || cube[RIGHT].Tab_carre[1][2] == c_up){
-        while (cube[UP].Tab_carre[2][1] == c_up){
-            cube = clockwise(cube, 1, UP);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, LEFT);
+        cube = clockwise(cube, 1, DOWN);
         }
-        while (cube[RIGHT].Tab_carre[1][0] != c_up){
+
+    while (cube[RIGHT].Tab_carre[0][1] == c_up || cube[RIGHT].Tab_carre[2][1] == c_up || cube[RIGHT].Tab_carre[1][0] == c_up){
+        while (cube[DOWN].Tab_carre[2][1] == c_up){
+            cube = clockwise(cube, 1, DOWN);
+        }
+        while (cube[RIGHT].Tab_carre[1][2] != c_up){
             cube = clockwise(cube, 1, RIGHT);
         }
         cube = clockwise(cube, 1, RIGHT);
-        cube = clockwise(cube, 3, UP);
-        cube = clockwise(cube, 1, BACK);
-        cube = clockwise(cube, 1, UP);
+        cube = clockwise(cube, 3, DOWN);
+        cube = clockwise(cube, 1, FRONT);
+        cube = clockwise(cube, 1, DOWN);
     }
 
-    while (cube[BACK].Tab_carre[0][1] == c_up || cube[BACK].Tab_carre[2][1] == c_up || cube[BACK].Tab_carre[1][2] == c_up){
-        while (cube[UP].Tab_carre[1][0] == c_up){
-            cube = clockwise(cube, 1, UP);
+    while (cube[BACK].Tab_carre[0][1] == c_up || cube[BACK].Tab_carre[2][1] == c_up || cube[BACK].Tab_carre[1][0] == c_up){
+        while (cube[DOWN].Tab_carre[1][2] == c_up){
+            cube = clockwise(cube, 1, DOWN);
         }
-        while (cube[BACK].Tab_carre[1][0] != c_up){
+        while (cube[BACK].Tab_carre[1][2] != c_up){
             cube = clockwise(cube, 1, BACK);
         }
         cube = clockwise(cube, 1, BACK);
-        cube = clockwise(cube, 3, UP);
+        cube = clockwise(cube, 3, DOWN);
         cube = clockwise(cube, 1, LEFT);
-        cube = clockwise(cube, 1, UP);
+        cube = clockwise(cube, 1, DOWN);
     }
+
 
 
     return cube;
