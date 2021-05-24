@@ -262,8 +262,10 @@ Face* move_rubiks(Face* cube){
 
 
 Face* scramble_rubiks(Face* cube){
-    int x;
-    for (int i = 0; i < 30; i++){
+    int x, y;
+    printf("Entrez le nombre de mouvement que vous voulez faire afin de melanger le cube\n");
+    scanf("%d", &y);
+    for (int i = 0; i < y; i++){
         x = rand() % 6;
         cube = clockwise(cube, 1, x);
     }

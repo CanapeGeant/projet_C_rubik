@@ -31,21 +31,7 @@ void resolution(Face* cube){
 
 Face* croix(Face* cube){
     T_COLOR c_up = cube[UP].Tab_carre[1][1];
-    int bool = 1;
-    /*while (cube[UP].Tab_carre[0][1] != c_up   && cube[UP].Tab_carre[1][0] != c_up &&
-    cube[UP].Tab_carre[1][2] != c_up && cube[UP].Tab_carre[2][1] != c_up){
-        do {
-            if (cube[DOWN].Tab_carre[0][1] == c_up   && cube[DOWN].Tab_carre[1][0] == c_up &&
-            cube[DOWN].Tab_carre[1][2] == c_up && cube[DOWN].Tab_carre[2][1] == c_up){
-                bool = 0;
-                printf("Essayez de ramener toutes les cases nécessaires pour réaliser une croix parfaite sur la face UP");
-            }
-            else{
-                bool = 1;
-            }
-        }while (bool == 0);*/
-    int cpt_up1 = 0, cpt_up2 = 0 ,cpt_up3 =0,cpt_up4=0, cpt, cpt_down1=0, cpt_down2=0, cpt_down3=0,cpt_down4=0, cpt_up= 4 , cpt_down =0;
-    cpt = cpt_up1 + cpt_up2 + cpt_up3 + cpt_up4 + cpt_down1 + cpt_down2 + cpt_down3 + cpt_down4;
+    int cpt_up1 = 0, cpt_up2 = 0 ,cpt_up3 =0,cpt_up4=0, cpt_down1=0, cpt_down2=0, cpt_down3=0,cpt_down4=0, cpt_up= 4;
 
     while (cpt_up !=0) {
 
@@ -192,6 +178,45 @@ Face* croix(Face* cube){
     }
 
 
+
+    for (int i=0; i<4;i++){
+        if (cube[BACK].Tab_carre[1][2] != cube[BACK].Tab_carre[1][1] && cube[DOWN].Tab_carre[1][2] != c_up){
+            clockwise(cube, 1, DOWN);
+        }
+    }
+    if (cube[UP].Tab_carre[1][0] != c_up) {
+        clockwise(cube, 2, BACK);
+    }
+
+
+    for (int i=0; i<4;i++) {
+        if (cube[RIGHT].Tab_carre[1][2] != cube[RIGHT].Tab_carre[1][1] && cube[DOWN].Tab_carre[2][1] != c_up) {
+            clockwise(cube, 1, DOWN);
+        }
+    }
+    if (cube[UP].Tab_carre[2][1] != c_up) {
+        clockwise(cube, 2, RIGHT);
+    }
+
+
+    for (int i=0; i<4;i++) {
+        if (cube[FRONT].Tab_carre[1][2] != cube[FRONT].Tab_carre[1][1] && cube[DOWN].Tab_carre[1][0] != c_up) {
+            clockwise(cube, 1, DOWN);
+        }
+    }
+    if (cube[UP].Tab_carre[1][2] != c_up) {
+        clockwise(cube, 2, FRONT);
+    }
+
+
+    for (int i=0; i<4;i++) {
+        if (cube[LEFT].Tab_carre[1][2] != cube[LEFT].Tab_carre[1][1] && cube[DOWN].Tab_carre[0][1] != c_up) {
+            clockwise(cube, 1, DOWN);
+        }
+    }
+    if (cube[UP].Tab_carre[0][1] != c_up){
+        clockwise(cube, 2, LEFT);
+    }
 
     return cube;
 }
